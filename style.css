@@ -60,51 +60,259 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     background-image: 
+        /* 增加更多彩色点缀，使用不同大小和颜色 */
+        radial-gradient(circle, #ff6b6b 1px, transparent 1px),
+        radial-gradient(circle, #4ecdc4 1px, transparent 1px),
+        radial-gradient(circle, #45b7d1 1px, transparent 1px),
+        radial-gradient(circle, #ff69b4 1px, transparent 1px),
+        radial-gradient(circle, #95e1d3 1px, transparent 1px),
+        radial-gradient(circle, #f38181 1px, transparent 1px),
+        radial-gradient(circle, #fce38a 1px, transparent 1px),
+        radial-gradient(circle, #eaffd0 1px, transparent 1px),
+        radial-gradient(circle, #a8e6cf 1px, transparent 1px),
+        radial-gradient(circle, #dcedc1 1px, transparent 1px),
+        radial-gradient(circle, #fff 1px, transparent 1px),
+        radial-gradient(circle, #4ecdc4 1px, transparent 1px),
+        radial-gradient(circle, #ff69b4 1px, transparent 1px),
+        /* 新增错位彩点 */
         radial-gradient(circle, #ff6b6b 1px, transparent 1px),
         radial-gradient(circle, #4ecdc4 1px, transparent 1px),
         radial-gradient(circle, #45b7d1 1px, transparent 1px),
         radial-gradient(circle, #ff69b4 1px, transparent 1px);
     background-size: 
-        150px 150px, 
-        100px 100px, 
-        200px 200px, 
-        120px 120px;
+        /* 进一步随机化背景大小，每个渐变都有独特的大小 */
+        547px 493px, 
+        372px 347px, 
+        748px 592px, 
+        448px 423px,
+        624px 573px,
+        356px 352px,
+        688px 643px,
+        492px 475px,
+        672px 529px,
+        404px 416px,
+        936px 869px,
+        792px 732px,
+        1068px 801px,
+        /* 进一步随机化错位彩点的大小，每个渐变都有独特的大小 */
+        489px 521px, 
+        397px 289px, 
+        672px 613px, 
+        463px 367px;
     background-position: 
+        /* 为每个径向渐变设置更随机的初始位置，确保完全错位 */
         0 0, 
         50px 50px, 
         75px 75px, 
-        25px 25px;
-    opacity: 0.3;
+        25px 25px,
+        100px 120px,
+        150px 80px,
+        30px 150px,
+        180px 120px,
+        90px 200px,
+        20px 250px,
+        60px 100px,
+        120px 180px,
+        40px 220px,
+        /* 新增错位彩点的初始位置，更随机化 */
+        187px 63px, 
+        95px 212px, 
+        314px 178px, 
+        126px 354px;
+    opacity: 0.4;
     z-index: -1;
-    animation: twinkle 4s infinite ease-in-out, backgroundMove 20s infinite linear;
+    /* 优化为更自然的彩点动画效果 - 只保留一个背景移动动画，避免三角形图案 */
+    animation: 
+        backgroundMove1 200s infinite ease-in-out, 
+        twinkleRandom 20s infinite ease-in-out;
 }
 
 /* 移除了两侧圣诞树背景，因为已经使用了完整的圣诞树背景图片 */
 
-/* 彩色点缀闪烁动画 */
-@keyframes twinkle {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.6; }
-}
-
-/* 背景移动动画 */
-@keyframes backgroundMove {
-    0% {
+/* 背景移动动画 - 为所有17个径向渐变添加更随机的移动路径，避免固定图案 */
+@keyframes backgroundMove1 {
+    0%, 100% {
         background-position: 
             0 0, 
             50px 50px, 
             75px 75px, 
-            25px 25px;
+            25px 25px,
+            100px 120px,
+            150px 80px,
+            30px 150px,
+            180px 120px,
+            90px 200px,
+            20px 250px,
+            60px 100px,
+            120px 180px,
+            40px 220px,
+            187px 63px, 
+            95px 212px, 
+            314px 178px, 
+            126px 354px;
     }
-    100% {
+    25% {
         background-position: 
-            150px 150px, 
-            150px 150px, 
-            275px 275px, 
-            145px 145px;
+            273px 246px, 
+            236px 223px, 
+            411px 333px, 
+            236px 235px,
+            362px 346px,
+            328px 266px,
+            359px 396px,
+            336px 287px,
+            376px 359px,
+            212px 333px,
+            498px 434px,
+            456px 416px,
+            554px 485px,
+            338px 312px, 
+            246px 350px, 
+            543px 445px, 
+            304px 460px;
     }
+    50% {
+        background-position: 
+            547px 493px, 
+            422px 397px, 
+            823px 667px, 
+            473px 448px,
+            724px 693px,
+            506px 432px,
+            718px 793px,
+            672px 595px,
+            762px 729px,
+            424px 666px,
+            996px 969px,
+            912px 912px,
+            1108px 1021px,
+            694px 556px, 
+            487px 505px, 
+            1022px 730px, 
+            592px 710px;
+    }
+    75% {
+        background-position: 
+            136px 123px, 
+            316px 298px, 
+            617px 500px, 
+            355px 336px,
+            512px 519px,
+            382px 344px,
+            538px 595px,
+            504px 446px,
+            569px 542px,
+            312px 499px,
+            747px 701px,
+            684px 614px,
+            831px 760px,
+            441px 409px, 
+            341px 362px, 
+            778px 556px, 
+            419px 532px;
+    }
+}
+
+/* 第二个背景移动动画 - 为所有17个径向渐变添加移动路径，与第一个明显不同 */
+@keyframes backgroundMove2 {
+    0%, 100% {
+        background-position: 
+            200px 0, 
+            300px 50px, 
+            400px 100px, 
+            500px 150px,
+            600px 200px,
+            700px 250px,
+            800px 300px,
+            900px 350px,
+            1000px 400px,
+            1100px 450px,
+            1200px 500px,
+            1300px 550px,
+            1400px 600px,
+            /* 新增错位彩点的移动路径 */
+            287px 163px, 
+            195px 312px, 
+            414px 278px, 
+            226px 454px;
+    }
+    25% {
+        background-position: 
+            0 200px, 
+            100px 250px, 
+            200px 300px, 
+            300px 350px,
+            400px 400px,
+            500px 450px,
+            600px 500px,
+            700px 550px,
+            800px 600px,
+            900px 650px,
+            1000px 700px,
+            1100px 750px,
+            1200px 800px,
+            /* 新增错位彩点的25%关键帧位置 */
+            87px 363px, 
+            295px 512px, 
+            114px 478px, 
+            326px 554px;
+    }
+    50% {
+        background-position: 
+            200px 400px, 
+            300px 450px, 
+            400px 500px, 
+            500px 550px,
+            600px 600px,
+            700px 650px,
+            800px 700px,
+            900px 750px,
+            1000px 800px,
+            1100px 850px,
+            1200px 900px,
+            1300px 950px,
+            1400px 1000px,
+            /* 新增错位彩点的50%关键帧位置 */
+            287px 563px, 
+            195px 612px, 
+            414px 578px, 
+            226px 754px;
+    }
+    75% {
+        background-position: 
+            0 600px, 
+            100px 650px, 
+            200px 700px, 
+            300px 750px,
+            400px 800px,
+            500px 850px,
+            600px 900px,
+            700px 950px,
+            800px 1000px,
+            900px 1050px,
+            1000px 1100px,
+            1100px 1150px,
+            1200px 1200px,
+            /* 新增错位彩点的75%关键帧位置 */
+            87px 763px, 
+            295px 812px, 
+            114px 778px, 
+            326px 854px;
+    }
+}
+
+/* 随机明灭效果动画 - 模拟星星随机闪烁，更自然的效果 */
+@keyframes twinkleRandom {
+    0% { opacity: 0.3; }
+    17% { opacity: 0.5; }
+    31% { opacity: 0.35; }
+    46% { opacity: 0.6; }
+    62% { opacity: 0.4; }
+    78% { opacity: 0.55; }
+    93% { opacity: 0.3; }
+    100% { opacity: 0.45; }
 }
 
 
@@ -129,9 +337,9 @@ body::before {
 
     top: 50%;
 
-    left: 50%;
+    left: 80%;
 
-    transform: translate(0, -50%);
+    transform: translate(-100%, -50%);
 
     z-index: 1000;
 
@@ -377,9 +585,83 @@ body::before {
 
     align-items: center;
 
-    transform: translate(-200px, -100px);
+    transform: translate(-200px, 150px);
 
 }
+
+/* 歌词容器样式 - 定位在正确的红色位置 */
+.lyrics-container {
+    position: fixed;
+    top: -100%;
+    left: 42%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    width: 320px;
+    z-index: 500;
+}
+
+/* 歌词行样式 - 初始隐藏，添加紫色流光效果 */
+.lyric-line {
+    opacity: 0;
+    font-size: 16px;
+    color: #4ecdc4;
+    text-shadow: 0 0 5px #4ecdc4;
+    margin-bottom: 10px;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    animation: 
+        fadeInLine 8s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+        waterWave 6s ease-in-out forwards;
+}
+
+/* 逐行显现动画 - 更丝滑的效果 */
+@keyframes fadeInLine {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 0.8; transform: translateY(0); }
+}
+
+/* 紫色流光效果动画 - 只出现一次，进一步降低浮夸感 */
+@keyframes waterWave {
+    0% {
+        text-shadow: 
+            0 0 1px #4ecdc4,
+            0 0 2px #4ecdc4;
+    }
+    25% {
+        text-shadow: 
+            0 0 1px #9b59b6,
+            0 0 2px #9b59b6,
+            0 0 3px #9b59b6;
+    }
+    50% {
+        text-shadow: 
+            0 0 1px #9b59b6,
+            0 0 3px #9b59b6,
+            0 0 5px #9b59b6;
+    }
+    75% {
+        text-shadow: 
+            0 0 1px #4ecdc4,
+            0 0 2px #4ecdc4;
+    }
+    100% {
+        text-shadow: 
+            0 0 1px #4ecdc4,
+            0 0 2px #4ecdc4;
+    }
+}
+
+/* 持续下移动画 - 定义在媒体查询外部，确保能被正确解析 */
+@keyframes continuousMoveDown {
+    from { bottom: -10px; }
+    to { bottom: -100px; }
+}
+
+/* 为每行歌词设置不同的动画延迟，实现顺序显现：按照用户指定精确时间点浮现 */
+.lyric-line:nth-child(1) { animation-delay: 4s, 0s; }
+.lyric-line:nth-child(2) { animation-delay: 7s, 1s; }
+.lyric-line:nth-child(3) { animation-delay: 10s, 2s; }
+.lyric-line:nth-child(4) { animation-delay: 13s, 3s; }
+.lyric-line:nth-child(5) { animation-delay: 20s, 4s; }
 
 
 
@@ -419,7 +701,7 @@ body::before {
 
 .bullet-options li {
 
-    margin-bottom: 5px;
+    margin-bottom: 6px;
 
 }
 
@@ -431,7 +713,7 @@ body::before {
 
     display: inline-block;
 
-    padding: 10px 20px;
+    padding: 6px 15px;
 
     background-color: rgba(44, 44, 44, 0.95);
 
@@ -445,13 +727,15 @@ body::before {
 
     border-radius: 3px;
 
-    box-shadow: 0 0 5px rgba(175, 78, 205, 0.756);
+    box-shadow: 0 0 2.5px rgba(175, 78, 205, 0.756);
 
     transition: all 0.3s ease;
 
     position: relative;
 
     overflow: hidden;
+
+    animation: waterWave 24s ease-in-out infinite;
 
 }
 
@@ -485,7 +769,7 @@ body::before {
 
     transform: scale(1.05);
 
-    box-shadow: 0 0 15px rgba(78, 205, 196, 0.5);
+    box-shadow: 0 0 7.5px rgba(78, 205, 196, 0.5);
 
 }
 
@@ -557,18 +841,10 @@ body::before {
     }
 }
 
-/* 添加文字脉冲效果 */
-@keyframes textPulse {
-    0%, 100% {
-        text-shadow: 0 0 2px #4ecdc4, 0 0 5px #4ecdc4;
-    }
-    50% {
-        text-shadow: 0 0 4px #4ecdc4, 0 0 8px #4ecdc4, 0 0 12px #4ecdc4;
-    }
-}
+
 
 .page.active {
-    animation: fadeInUp 0.5s ease-out, textPulse 3s infinite ease-in-out;
+    animation: fadeInUp 0.5s ease-out;
 }
 
 
@@ -637,65 +913,134 @@ body::before {
 
 /* 响应式设计 */
 @media (max-width: 768px) {
+    /* 优化音乐选择器 - 固定到屏幕底部，避免遮挡内容 */
     .music-selector {
         position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 80%;
-        max-width: 300px;
-        font-size: 12px;
+        top: auto !important;
+        bottom: 100px !important;
+        left: 50% !important;
+        transform: translate(-50%, 0) !important;
+        width: 35%;
+        max-width: 200px;
+        height: 180px;
+        font-size: 9px;
+        padding: 6px;
     }
     
+
+    
+    /* 优化容器和页面 - 占据整个屏幕宽度，居中显示 */
     .container {
-        padding: 20px 10px 50px;
+        padding: 40px 10px 250px;
+        max-width: 100%;
+        margin-right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
     
+    /* 优化选择页面 - 居中显示，增加上下间距 */
     .selection-page {
         transform: none;
-        margin: 0;
+        margin: 40px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
     
+    /* 优化页面内容 - 居中显示，增加上下间距 */
     .page {
-        padding: 20px;
+        padding: 30px 20px;
         margin-left: 0;
-        margin-top: 0;
+        margin-top: 40px;
+        margin-bottom: 40px;
         max-width: 100%;
         font-size: 14px;
+        line-height: 2.0;
+        text-align: center;
     }
     
+    /* 优化标题 - 居中显示，增加上下间距 */
     .page h1 {
         font-size: 20px;
+        margin: 30px 0;
+        text-align: center;
     }
     
+    /* 优化段落 - 居中显示，增加上下间距 */
     .page p {
         font-size: 14px;
-        line-height: 1.8;
+        line-height: 2.0;
+        margin: 20px 0;
+        text-align: center;
     }
     
+    /* 优化分页控件 */
     .pagination {
-        gap: 8px;
-        padding: 6px 10px;
+        gap: 10px;
+        padding: 8px 15px;
         font-size: 12px;
     }
     
+    /* 优化导航按钮 */
     .nav-btn {
-        padding: 5px 10px;
+        padding: 8px 15px;
         font-size: 12px;
+        min-width: 60px;
     }
     
+    /* 优化页码信息 */
     .page-info {
         font-size: 12px;
     }
     
+    /* 优化子弹头选项 - 下移80px，整体居中 */
     .bullet-options {
-        margin: 0;
+        margin: 100px 0 20px 0;
+        text-align: left;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* 优化子弹头链接 - 进一步改小，增加上下间距，内部左对齐 */
+    .bullet-link {
+        font-size: 8px;
+        padding: 8px 12px;
+        margin: 8px 0;
+        display: block;
+        width: 100%;
+        max-width: 200px;
+        text-align: left;
+        animation: none;
+    }
+    
+    /* 优化歌词容器 */
+    .lyrics-container {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: 100%;
+        margin-bottom: 20px;
         text-align: center;
     }
     
-    .bullet-link {
-        font-size: 14px;
-        padding: 8px 15px;
+    /* 优化歌词行 */
+    .lyric-line {
+        font-size: 12px;
+        margin-bottom: 5px;
+        animation: fadeInLine 8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        text-align: center;
+    }
+    
+    /* 手机上禁用复杂背景动画，降低性能消耗 */
+    body::before {
+        animation: backgroundMove1 300s infinite ease-in-out;
     }
 }
 

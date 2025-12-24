@@ -76,13 +76,124 @@ const documentContent = `@祝福
 感谢你这么完美地出现在我的记忆中
 
 如果以后再也见不到你
-祝你 早安，午安，晚安`;
+祝你 早安，午安，晚安
+
+@小小人做好了空气蛹时，月亮变成了两个
+###
+大家都是呆头企鹅
+
+但其中一只格外地与众不同
+
+并非有着斑马条纹
+或是长着帅气的蓬蓬头
+
+而是有它存在的空间多了一层金黄的维度
+
+彩色的符号与其他不明意义的意义从中逸散而出
+
+让我们叫它Q.好了
+
+。
+
+那又怎么样呢？
+
+有的企鹅未尝察觉
+或察觉了也并不在意
+
+但还是有企鹅发现了不同空气
+
+就像在冰雪炫光中隐隐看见了
+洒在物体与空气交界处的巧克力彩针
+
+他们惊奇而试探着感受这种变化
+
+在水花中打成一团
+用圆鼓鼓的肚腩挤来挤去
+
+像往常一样觅食
+在极昼下显得尖细而平坦的空气中呼吸
+
+除了那些特别之外
+好像也没有什么特别
+
+。
+
+有时企鹅们会忍不住去惊扰它
+
+矮墩墩企鹅推来一块滚圆的石头
+
+放在那里吧
+Q.见怪不怪
+指了指小山一般的石头堆
+
+你在干嘛呀？
+筑巢不用这么多石头
+
+我要建立属于企鹅的城邦
+
+它这么跟矮墩墩企鹅说
+
+。    
+
+等到胖嘟嘟企鹅来的时候
+它使劲抬头也望不到石头山的顶端
+
+你回去吧
+Q.背对它说
+
+我不再需要更多的石头了
+
+胖嘟嘟企鹅凑上前去
+Q.正对雪地上画着的圆形凝神苦思
+
+你在干嘛？这是什么？
+（企鹅不认得圆形）
+
+Q.两簇金黄眉毛倒竖
+可能是嫌转身太慢
+它直接向侧后方一倒
+看到了来访的胖嘟嘟企鹅
+
+...
+
+滚，看圆形
+
+...
+
+滚，再看企鹅
+
+它突然嘎嘎笑了起来
+
+好像发现了什么不得了的东西
+它指挥圆滚滚的胖嘟嘟企鹅躺在雪地里
+
+用爪子在它与圆之间踩出一个等号
+
+这就是世界的真相!
+
+Q.金黄色的眉毛上扬
+露出科学家般的傲慢神情：
+
+企鹅 = 圆
+
+那又如何呢？
+
+圆滚滚的胖嘟嘟企鹅问
+
+Q.不再回答
+
+本来就无何如何
+
+这就是意义所在
+
+它想
+`;
 
 // 页面数据
 let pages = [];
 let currentPage = 0;
 let currentPart = 1;
-const totalParts = 2;
+const totalParts = 3;
 
 // DOM元素
 const pagesContainer = document.getElementById('pages-container');
@@ -101,9 +212,24 @@ function getPart1LastIndex() {
     return -1;
 }
 
+// 辅助函数：获取第二部分的最后一页索引
+function getPart2LastIndex() {
+    for (let i = pages.length - 1; i >= 0; i--) {
+        if (pages[i].part === 2) {
+            return i;
+        }
+    }
+    return -1;
+}
+
 // 辅助函数：获取第二部分的起始索引
 function getPart2StartIndex() {
     return pages.findIndex(page => page.part === 2);
+}
+
+// 辅助函数：获取第三部分的起始索引
+function getPart3StartIndex() {
+    return pages.findIndex(page => page.part === 3);
 }
 
 // 解析文档内容，让每个空行和###都变为下一页显示
@@ -122,10 +248,12 @@ function parseDocument() {
         const trimmedLine = originalLine.trim();
         
         if (trimmedLine.startsWith('@')) {
-            // 标题行，检查是否切换到第二部分
+            // 标题行，检查是否切换到第二或第三部分
             currentTitle = trimmedLine.substring(1);
             if (currentTitle === '想你，她和马戏团') {
                 currentPart = 2;
+            } else if (currentTitle === '小小人做好了空气蛹时，月亮变成了两个') {
+                currentPart = 3;
             }
         } else if (trimmedLine === '###' || (trimmedLine === '' && currentPageContent.trim() !== '')) {
             // ###或空行作为分页标记，且当前页面有内容
@@ -176,14 +304,14 @@ function renderPages() {
     updatePagination();
 }
 
-// 更新分页控件，确保第一部分和第二部分之间有明确分隔
+// 更新分页控件，确保各部分之间有明确分隔
 function updatePagination() {
-    // 动态计算第一部分和第二部分的范围
-    // 第一部分：祝福，第二部分：想你，她和马戏团
+    // 动态计算各部分的范围
     let partStart, partEnd, partCurrent, partTotal;
     
-    // 使用辅助函数获取第一部分的最后一页索引
+    // 使用辅助函数获取各部分的边界
     const part1LastIndex = getPart1LastIndex();
+    const part2LastIndex = getPart2LastIndex();
     
     if (currentPage <= part1LastIndex) {
         // 第一部分
@@ -191,26 +319,31 @@ function updatePagination() {
         partEnd = part1LastIndex;
         partCurrent = currentPage + 1;
         partTotal = part1LastIndex + 1;
-    } else {
+    } else if (currentPage <= part2LastIndex) {
         // 第二部分
         partStart = part1LastIndex + 1;
-        partEnd = pages.length - 1;
+        partEnd = part2LastIndex;
         partCurrent = currentPage - part1LastIndex;
-        partTotal = pages.length - part1LastIndex;
+        partTotal = part2LastIndex - part1LastIndex;
+    } else {
+        // 第三部分
+        partStart = part2LastIndex + 1;
+        partEnd = pages.length - 1;
+        partCurrent = currentPage - part2LastIndex;
+        partTotal = pages.length - part2LastIndex;
     }
     
     // 更新页码显示，只显示当前部分的页码
     pageInfo.textContent = `${partCurrent} / ${partTotal}`;
     
-    // 禁用分页按钮，确保第一部分和第二部分之间不能直接切换
+    // 禁用分页按钮，确保各部分之间不能直接切换
     prevBtn.disabled = currentPage === partStart;
     nextBtn.disabled = currentPage === partEnd;
 }
 
-// 切换到指定页面，确保第一部分和第二部分之间有明确分隔
+// 切换到指定页面，确保各部分之间有明确分隔
 function goToPage(pageIndex) {
-    // 确保第一部分和第二部分之间有明确分隔
-    // 第一部分：0-3页，第二部分：4-8页
+    // 确保各部分之间有明确分隔
     if (pageIndex >= 0 && pageIndex < pages.length) {
         currentPage = pageIndex;
         
@@ -284,29 +417,31 @@ function init() {
         });
     });
     
-    // 点击页面空白处可以前进到下一页，确保第一部分和第二部分之间有明确分隔
+    // 点击页面空白处可以前进到下一页，确保各部分之间有明确分隔
     pagesContainer.addEventListener('click', () => {
-        // 使用辅助函数获取第一部分的最后一页索引
+        // 使用辅助函数获取各部分的边界
         const part1LastIndex = getPart1LastIndex();
+        const part2LastIndex = getPart2LastIndex();
         
-        // 确保在第一部分的最后一页点击不会进入第二部分，在第二部分的最后一页点击不会继续前进
+        // 确保在各部分的最后一页点击不会进入下一部分
         if (currentPage < pages.length - 1 && 
-            !((currentPage === part1LastIndex) || (currentPage === pages.length - 1))) {
+            !(currentPage === part1LastIndex || currentPage === part2LastIndex || currentPage === pages.length - 1)) {
             goToPage(currentPage + 1);
         }
     });
     
     // 添加键盘导航支持
     document.addEventListener('keydown', (e) => {
-        // 使用辅助函数获取第一部分的最后一页索引
+        // 使用辅助函数获取各部分的边界
         const part1LastIndex = getPart1LastIndex();
+        const part2LastIndex = getPart2LastIndex();
         
         switch (e.key) {
             case 'ArrowRight':
             case ' ': // 空格键
                 e.preventDefault();
                 if (currentPage < pages.length - 1 && 
-                    !((currentPage === part1LastIndex) || (currentPage === pages.length - 1))) {
+                    !(currentPage === part1LastIndex || currentPage === part2LastIndex || currentPage === pages.length - 1)) {
                     goToPage(currentPage + 1);
                 }
                 break;
@@ -348,6 +483,13 @@ function init() {
                 const part2StartIndex = getPart2StartIndex();
                 if (part2StartIndex !== -1) {
                     goToPage(part2StartIndex);
+                }
+            } else if (target === 'air-cocoon') {
+                // 跳转到第三部分的第一页
+                // 使用辅助函数获取第三部分的起始索引
+                const part3StartIndex = getPart3StartIndex();
+                if (part3StartIndex !== -1) {
+                    goToPage(part3StartIndex);
                 }
             } else {
                 // 跳转到第一部分的第一页
