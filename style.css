@@ -657,11 +657,11 @@ body::before {
 }
 
 /* 为每行歌词设置不同的动画延迟，实现顺序显现：按照用户指定精确时间点浮现 */
-.lyric-line:nth-child(1) { animation-delay: 4s, 0s; }
+.lyric-line:nth-child(1) { animation-delay: 3s, 0s; }
 .lyric-line:nth-child(2) { animation-delay: 7s, 2s; }
-.lyric-line:nth-child(3) { animation-delay: 10s, 4s; }
-.lyric-line:nth-child(4) { animation-delay: 13s, 6s; }
-.lyric-line:nth-child(5) { animation-delay: 20s, 8s; }
+.lyric-line:nth-child(3) { animation-delay: 11s, 4s; }
+.lyric-line:nth-child(4) { animation-delay: 15s, 6s; }
+.lyric-line:nth-child(5) { animation-delay: 23s, 8s; }
 
 
 
