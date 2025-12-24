@@ -48,6 +48,11 @@ body {
 
     min-height: 100vh;
 
+    /* 优化背景渲染，防止动画影响背景 */
+    will-change: background-position;
+    /* 确保背景层在最底层 */
+    z-index: -2;
+
 }
 
 
@@ -518,7 +523,9 @@ body::before {
 
 /* 页面样式 - 无黑色文字框 */
 .page {
-    display: none;
+    /* 使用opacity和visibility代替display，减少重排 */
+    opacity: 0;
+    visibility: hidden;
     width: 100%;
     max-width: 600px;
     padding: 20px 40px 30px 40px;
@@ -527,7 +534,6 @@ body::before {
     background-color: transparent;
     border: none;
     box-shadow: none;
-    animation: fadeIn 0.5s ease-in-out;
     text-align: left;
     overflow-y: auto;
     /* 直接文本样式 */
@@ -536,11 +542,14 @@ body::before {
     color: #4ecdc4;
     text-shadow: 0 0 2px #4ecdc4, 0 0 5px #4ecdc4;
     white-space: pre-line;
-    transition: all 0.3s ease;
+    /* 优化动画性能 */
+    will-change: opacity, visibility;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .page.active {
-    display: block;
+    opacity: 1;
+    visibility: visible;
     animation: fadeInUp 0.5s ease-out;
 }
 
@@ -558,10 +567,6 @@ body::before {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
-}
-
-.page.active {
-    animation: fadeInUp 0.5s ease-out;
 }
 
 
