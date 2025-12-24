@@ -90,24 +90,24 @@ body::before {
         409px 265px, 543px 428px, 668px 301px;
     opacity: 0.3;
     z-index: -1;
-    /* 应用两个不同周期的闪烁动画 */
+    /* 应用两个相反的闪烁动画，减慢呼吸速度 */
     animation: 
-        twinkleGroup1 3s infinite ease-in-out,
-        twinkleGroup2 4s infinite ease-in-out reverse;
+        twinkleGroup1 6s infinite ease-in-out,
+        twinkleGroup2 6s infinite ease-in-out;
 }
 
 /* 移除了两侧圣诞树背景，因为已经使用了完整的圣诞树背景图片 */
 
 /* 第一组彩灯闪烁动画 */
 @keyframes twinkleGroup1 {
-    0%, 100% { opacity: 0.2; }
-    50% { opacity: 0.8; }
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.6; }
 }
 
-/* 第二组彩灯闪烁动画 */
+/* 第二组彩灯闪烁动画 - 与第一组相反 */
 @keyframes twinkleGroup2 {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.7; }
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 0.4; }
 }
 
 
