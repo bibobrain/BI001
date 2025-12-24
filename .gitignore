@@ -1,0 +1,22 @@
+# 忽略临时文件
+temp_files/
+*.bak
+
+# 忽略音频文件
+*.mp3
+
+# 忽略IDE文件
+.vscode/
+.idea/
+
+# 忽略系统文件
+Thumbs.db
+.DS_Store
+
+# 忽略日志文件
+*.log
+
+# 忽略环境文件
+.env
+.env.local
+.env.*.local
