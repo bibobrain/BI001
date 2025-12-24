@@ -78,7 +78,7 @@ body::before {
         25px 25px;
     opacity: 0.3;
     z-index: -1;
-    animation: twinkle 4s infinite ease-in-out, backgroundMove 20s infinite linear;
+    animation: twinkle 4s infinite ease-in-out;
 }
 
 /* 移除了两侧圣诞树背景，因为已经使用了完整的圣诞树背景图片 */
@@ -87,24 +87,6 @@ body::before {
 @keyframes twinkle {
     0%, 100% { opacity: 0.3; }
     50% { opacity: 0.6; }
-}
-
-/* 背景移动动画 */
-@keyframes backgroundMove {
-    0% {
-        background-position: 
-            0 0, 
-            50px 50px, 
-            75px 75px, 
-            25px 25px;
-    }
-    100% {
-        background-position: 
-            150px 150px, 
-            150px 150px, 
-            275px 275px, 
-            145px 145px;
-    }
 }
 
 
@@ -557,18 +539,8 @@ body::before {
     }
 }
 
-/* 添加文字脉冲效果 */
-@keyframes textPulse {
-    0%, 100% {
-        text-shadow: 0 0 2px #4ecdc4, 0 0 5px #4ecdc4;
-    }
-    50% {
-        text-shadow: 0 0 4px #4ecdc4, 0 0 8px #4ecdc4, 0 0 12px #4ecdc4;
-    }
-}
-
 .page.active {
-    animation: fadeInUp 0.5s ease-out, textPulse 3s infinite ease-in-out;
+    animation: fadeInUp 0.5s ease-out;
 }
 
 
