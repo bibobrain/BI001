@@ -91,21 +91,6 @@ const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 const audio = document.getElementById('audio');
 
-// 辅助函数：获取第一部分的最后一页索引
-function getPart1LastIndex() {
-    for (let i = pages.length - 1; i >= 0; i--) {
-        if (pages[i].part === 1) {
-            return i;
-        }
-    }
-    return -1;
-}
-
-// 辅助函数：获取第二部分的起始索引
-function getPart2StartIndex() {
-    return pages.findIndex(page => page.part === 2);
-}
-
 // 解析文档内容，让每个空行和###都变为下一页显示
 function parseDocument() {
     // 清空pages数组
@@ -151,6 +136,10 @@ function parseDocument() {
             part: currentPart
         });
     }
+    
+    // console.log('解析完成，共生成', pages.length, '页');
+    // console.log('第一部分页数:', pages.filter(page => page.part === 1).length);
+    // console.log('第二部分页数:', pages.filter(page => page.part === 2).length);
 }
 
 
@@ -182,8 +171,14 @@ function updatePagination() {
     // 第一部分：祝福，第二部分：想你，她和马戏团
     let partStart, partEnd, partCurrent, partTotal;
     
-    // 使用辅助函数获取第一部分的最后一页索引
-    const part1LastIndex = getPart1LastIndex();
+    // 找到第一部分的最后一页索引
+    let part1LastIndex = -1;
+    for (let i = pages.length - 1; i >= 0; i--) {
+        if (pages[i].part === 1) {
+            part1LastIndex = i;
+            break;
+        }
+    }
     
     if (currentPage <= part1LastIndex) {
         // 第一部分
@@ -286,40 +281,19 @@ function init() {
     
     // 点击页面空白处可以前进到下一页，确保第一部分和第二部分之间有明确分隔
     pagesContainer.addEventListener('click', () => {
-        // 使用辅助函数获取第一部分的最后一页索引
-        const part1LastIndex = getPart1LastIndex();
+        // 动态计算第一部分的最后一页索引
+        let part1LastIndex = -1;
+        for (let i = pages.length - 1; i >= 0; i--) {
+            if (pages[i].part === 1) {
+                part1LastIndex = i;
+                break;
+            }
+        }
         
         // 确保在第一部分的最后一页点击不会进入第二部分，在第二部分的最后一页点击不会继续前进
         if (currentPage < pages.length - 1 && 
             !((currentPage === part1LastIndex) || (currentPage === pages.length - 1))) {
             goToPage(currentPage + 1);
-        }
-    });
-    
-    // 添加键盘导航支持
-    document.addEventListener('keydown', (e) => {
-        // 使用辅助函数获取第一部分的最后一页索引
-        const part1LastIndex = getPart1LastIndex();
-        
-        switch (e.key) {
-            case 'ArrowRight':
-            case ' ': // 空格键
-                e.preventDefault();
-                if (currentPage < pages.length - 1 && 
-                    !((currentPage === part1LastIndex) || (currentPage === pages.length - 1))) {
-                    goToPage(currentPage + 1);
-                }
-                break;
-            case 'ArrowLeft':
-                e.preventDefault();
-                if (currentPage > 0) {
-                    goToPage(currentPage - 1);
-                }
-                break;
-            case 'Escape':
-                // 按ESC键返回首页
-                goToHome();
-                break;
         }
     });
     
@@ -344,8 +318,8 @@ function init() {
             // 根据目标跳转到对应部分
             if (target === 'missing') {
                 // 跳转到第二部分的第一页
-                // 使用辅助函数获取第二部分的起始索引
-                const part2StartIndex = getPart2StartIndex();
+                // 动态找到第二部分的起始索引
+                const part2StartIndex = pages.findIndex(page => page.part === 2);
                 if (part2StartIndex !== -1) {
                     goToPage(part2StartIndex);
                 }
