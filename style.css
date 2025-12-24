@@ -502,9 +502,7 @@ body::before {
 
 /* 页面样式 - 无黑色文字框 */
 .page {
-    /* 使用opacity和visibility代替display，减少重排 */
-    opacity: 0;
-    visibility: hidden;
+    display: none;
     width: 100%;
     max-width: 600px;
     padding: 20px 40px 30px 40px;
@@ -521,15 +519,11 @@ body::before {
     color: #4ecdc4;
     text-shadow: 0 0 2px #4ecdc4, 0 0 5px #4ecdc4;
     white-space: pre-line;
-    /* 优化动画性能 */
-    will-change: opacity, visibility;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    animation: fadeInUp 0.5s ease-out;
 }
 
 .page.active {
-    opacity: 1;
-    visibility: visible;
-    animation: fadeInUp 0.5s ease-out;
+    display: block;
 }
 
 @keyframes fadeIn {
