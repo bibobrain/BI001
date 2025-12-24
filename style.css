@@ -50,8 +50,6 @@ body {
 
     /* 优化背景渲染，防止动画影响背景 */
     will-change: background-position;
-    /* 确保背景层在最底层 */
-    z-index: -2;
 
 }
 

@@ -1,52 +1,102 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>平安夜祝福</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="music-selector">
-        <div class="music-item" data-src="">None</div>
-        <div class="music-item" data-src="Gingerbread Lover - Ivoris&CHEVY - 泡椒音乐 - 免费无损音乐MP3、FLAC、WAV在线播放下载网站.mp3">Gingerbread Lover</div>
-        <div class="music-item" data-src="still corners - Crying.mp3">Crying</div>
-        <div class="music-item" data-src="Hitomi Kuroishi - Masquerade.mp3">Masquerade</div>
-        <div class="music-item" data-src="Yusei、Stephanie Poetri - I love 3000 (feat. Stephanie Poetri)(Explicit).mp3">I Love 3000</div>
-        <div class="music-item" data-src="Billie Eilish - Male Fantasy.mp3">Male Fantasy</div>
-        <div class="music-item" data-src="Zaini、Dhan - i'll never let you go.mp3">I'll Never Let You Go</div>
-        <div class="music-item" data-src="melt our hearts-Altero&Robins-MP3下载-歌曲海-海量高品质MP3音乐免费下载.mp3">Melt Our Hearts</div>
-        <div class="music-item" data-src="itssiu、seoseo(서서) - Pop Pop (feat. seoseo).mp3">Pop Pop</div>
-        <div class="music-item" data-src="Dyslm、DNAKM - I Never Did (feat. DNAKM).mp3">I Never Did</div>
-        <div class="music-item" data-src="I Love You So - Delorians - 泡椒音乐 - 免费无损音乐MP3、FLAC、WAV在线播放下载网站.mp3">I Love You So</div>
-        <audio id="audio" loop>
-            <source src="" type="audio/mpeg">
-        </audio>
-    </div>
-    
-    <div class="container">
-        <!-- 初始选择页面 -->
-        <div class="selection-page" id="selection-page">
-            <ul class="bullet-options">
-                <li><a href="#" class="bullet-link" data-target="blessing">祝福</a></li>
-                <li><a href="#" class="bullet-link" data-target="missing">想你，她和马戏团</a></li>
-            </ul>
-        </div>
-        
-        <!-- 分页控件 -->
-        <div class="pagination" id="pagination" style="display: none;">
-            <a href="#" class="home-link" id="home-link">home</a>
-            <button id="prev" class="nav-btn">上一页</button>
-            <span id="page-info" class="page-info">1 / </span>
-            <button id="next" class="nav-btn">下一页</button>
-        </div>
-        
-        <!-- 页面内容容器 -->
-        <div class="pages-container" id="pages-container" style="display: none;">
-            <!-- 页面内容将通过JavaScript动态生成 -->
-        </div>
-    </div>
-    
-    <script src="script.js"></script>
-</body>
-</html>
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>平安夜祝福</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="music-selector">
+
+        <div class="music-item" data-src="">None</div>
+
+        <div class="music-item" data-src="Gingerbread Lover - Ivoris&CHEVY - 泡椒音乐 - 免费无损音乐MP3、FLAC、WAV在线播放下载网站.mp3">Gingerbread Lover</div>
+
+        <div class="music-item" data-src="still corners - Crying.mp3">Crying</div>
+
+        <div class="music-item" data-src="Hitomi Kuroishi - Masquerade.mp3">Masquerade</div>
+
+        <div class="music-item" data-src="Yusei、Stephanie Poetri - I love 3000 (feat. Stephanie Poetri)(Explicit).mp3">I Love 3000</div>
+
+        <div class="music-item" data-src="Billie Eilish - Male Fantasy.mp3">Male Fantasy</div>
+
+        <div class="music-item" data-src="Zaini、Dhan - i'll never let you go.mp3">I'll Never Let You Go</div>
+
+        <div class="music-item" data-src="melt our hearts-Altero&Robins-MP3下载-歌曲海-海量高品质MP3音乐免费下载.mp3">Melt Our Hearts</div>
+
+        <div class="music-item" data-src="itssiu、seoseo(서서) - Pop Pop (feat. seoseo).mp3">Pop Pop</div>
+
+        <div class="music-item" data-src="Dyslm、DNAKM - I Never Did (feat. DNAKM).mp3">I Never Did</div>
+
+        <div class="music-item" data-src="I Love You So - Delorians - 泡椒音乐 - 免费无损音乐MP3、FLAC、WAV在线播放下载网站.mp3">I Love You So</div>
+
+        <audio id="audio" loop>
+
+            <source src="" type="audio/mpeg">
+
+        </audio>
+
+    </div>
+
+    
+
+    <div class="container">
+
+        <!-- 初始选择页面 -->
+
+        <div class="selection-page" id="selection-page">
+
+            <ul class="bullet-options">
+                <li><a href="#" class="bullet-link" data-target="blessing">祝福</a></li>
+                <li><a href="#" class="bullet-link" data-target="missing">想你，她和马戏团</a></li>
+                <li><a href="#" class="bullet-link" data-target="untitled">Untitled-1#L7-7</a></li>
+            </ul>
+
+        </div>
+
+        
+
+        <!-- 分页控件 -->
+
+        <div class="pagination" id="pagination" style="display: none;">
+
+            <a href="#" class="home-link" id="home-link">home</a>
+
+            <button id="prev" class="nav-btn">上一页</button>
+
+            <span id="page-info" class="page-info">1 / </span>
+
+            <button id="next" class="nav-btn">下一页</button>
+
+        </div>
+
+        
+
+        <!-- 页面内容容器 -->
+
+        <div class="pages-container" id="pages-container" style="display: none;">
+
+            <!-- 页面内容将通过JavaScript动态生成 -->
+
+        </div>
+
+    </div>
+
+    
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+
