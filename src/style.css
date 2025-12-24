@@ -30,7 +30,7 @@ body {
 
     background-color: #000;
 
-    background-image: url('background.jpg');
+    background-image: url('../assets/background.jpg');
 
     background-size: cover;
 
@@ -47,9 +47,6 @@ body {
     position: relative;
 
     min-height: 100vh;
-
-    /* 优化背景渲染，防止动画影响背景 */
-    will-change: background-position;
 
 }
 
@@ -69,29 +66,45 @@ body::before {
         radial-gradient(circle, #4ecdc4 1px, transparent 1px),
         radial-gradient(circle, #45b7d1 1px, transparent 1px),
         radial-gradient(circle, #ff69b4 1px, transparent 1px);
-    /* 随机分布的背景大小和位置 */
     background-size: 
-        237px 189px, 156px 241px, 198px 167px, 
-        172px 213px, 209px 145px, 184px 227px,
-        215px 178px, 169px 233px, 192px 159px,
-        181px 207px, 223px 138px, 176px 245px;
+        150px 150px, 
+        100px 100px, 
+        200px 200px, 
+        120px 120px;
     background-position: 
-        32px 18px, 157px 243px, 271px 89px,
-        412px 156px, 537px 321px, 652px 198px,
-        28px 124px, 163px 357px, 287px 192px,
-        409px 265px, 543px 428px, 668px 301px;
+        0 0, 
+        50px 50px, 
+        75px 75px, 
+        25px 25px;
     opacity: 0.3;
     z-index: -1;
-    /* 使用原版的闪烁动画 */
-    animation: twinkle 4s infinite ease-in-out;
+    animation: twinkle 4s infinite ease-in-out, backgroundMove 20s infinite linear;
 }
 
 /* 移除了两侧圣诞树背景，因为已经使用了完整的圣诞树背景图片 */
 
-/* 彩色点缀闪烁动画 - 恢复原版效果 */
+/* 彩色点缀闪烁动画 */
 @keyframes twinkle {
     0%, 100% { opacity: 0.3; }
     50% { opacity: 0.6; }
+}
+
+/* 背景移动动画 */
+@keyframes backgroundMove {
+    0% {
+        background-position: 
+            0 0, 
+            50px 50px, 
+            75px 75px, 
+            25px 25px;
+    }
+    100% {
+        background-position: 
+            150px 150px, 
+            150px 150px, 
+            275px 275px, 
+            145px 145px;
+    }
 }
 
 
@@ -511,6 +524,7 @@ body::before {
     background-color: transparent;
     border: none;
     box-shadow: none;
+    animation: fadeIn 0.5s ease-in-out;
     text-align: left;
     overflow-y: auto;
     /* 直接文本样式 */
@@ -519,11 +533,12 @@ body::before {
     color: #4ecdc4;
     text-shadow: 0 0 2px #4ecdc4, 0 0 5px #4ecdc4;
     white-space: pre-line;
-    animation: fadeInUp 0.5s ease-out;
+    transition: all 0.3s ease;
 }
 
 .page.active {
     display: block;
+    animation: fadeInUp 0.5s ease-out;
 }
 
 @keyframes fadeIn {
@@ -540,6 +555,20 @@ body::before {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
+}
+
+/* 添加文字脉冲效果 */
+@keyframes textPulse {
+    0%, 100% {
+        text-shadow: 0 0 2px #4ecdc4, 0 0 5px #4ecdc4;
+    }
+    50% {
+        text-shadow: 0 0 4px #4ecdc4, 0 0 8px #4ecdc4, 0 0 12px #4ecdc4;
+    }
+}
+
+.page.active {
+    animation: fadeInUp 0.5s ease-out, textPulse 3s infinite ease-in-out;
 }
 
 
